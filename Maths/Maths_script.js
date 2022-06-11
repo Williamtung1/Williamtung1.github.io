@@ -61,7 +61,7 @@ function evaluating() {
         Answer: "",
     };
     if (question.includes("/")) {
-        var x = eval(question);
+        let x = eval(question);
         x = Math.round(x);
         alert(x);
         if (x === Number(answer)){
@@ -120,17 +120,17 @@ function setting_the_table() {
     if (document.getElementById('the_table')!= null) {
         document.getElementById('the_table').remove();
     }
-    var table = document.createElement('table');
-    var tableHead = document.createElement("thead");
-    var tableBody = document.createElement("tbody");
+    const table = document.createElement('table');
+    const tableHead = document.createElement("thead");
+    const tableBody = document.createElement("tbody");
 
-    var tr_head = document.createElement("tr");
+    const tr_head = document.createElement("tr");
 
-    var th_id = document.createElement("th");
-    var th_date = document.createElement("th");
-    var th_time = document.createElement("th");
-    var th_question = document.createElement("th");
-    var th_answer = document.createElement("th");
+    const th_id = document.createElement("th");
+    const th_date = document.createElement("th");
+    const th_time = document.createElement("th");
+    const th_question = document.createElement("th");
+    const th_answer = document.createElement("th");
 
     th_id.textContent = "id";
     th_date.textContent = "Date";
@@ -146,14 +146,16 @@ function setting_the_table() {
 
     tableHead.appendChild(tr_head);
 
-    for(var i = 0, j = set.length; i < j; i++) {
-        var tr_body = document.createElement("tr");
+    let i = 0;
+    const j = set.length;
+    for(; i < j; i++) {
+        let tr_body = document.createElement("tr");
 
-        var td_id = document.createElement("td");
-        var td_date = document.createElement("td");
-        var td_time = document.createElement("td");
-        var td_question = document.createElement("td");
-        var td_answer  = document.createElement("td");
+        let td_id = document.createElement("td");
+        let td_date = document.createElement("td");
+        let td_time = document.createElement("td");
+        let td_question = document.createElement("td");
+        let td_answer = document.createElement("td");
 
         td_id.textContent = String(i+1);
         td_date.textContent = set[i].Date;
@@ -172,15 +174,15 @@ function setting_the_table() {
 
     table.appendChild(tableHead);
     table.appendChild(tableBody);
-    var container = document.getElementById('container_for_table');
+    let container = document.getElementById('container_for_table');
     table.setAttribute("id", "the_table");
     container.appendChild(table);
 }
 
 function count() {
     let array = JSON.parse(localStorage.getItem('record'));
-    var correct = 0;
-    var incorrect = 0;
+    let correct = 0;
+    let incorrect = 0;
     let total_today = 0;
 
 
@@ -188,7 +190,7 @@ function count() {
     const today = new Date();
     let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
 
-    for(var i = 0; i < array.length; i++){
+    for(let i = 0; i < array.length; i++){
         if (array[i].Date === date) {
            total_today++;
            document.getElementById('total_today').value = total_today;
@@ -207,7 +209,7 @@ function count() {
             correct++;
             document.getElementById('value-correct').value = correct;
         }
-        var type_of_question = array.Question.reduce(function (acc, curr) {
+        let type_of_question = array.Question.reduce(function (acc, curr) {
             return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc;
         }, {});
         for (const [key, val] of Object.entries(type_of_question)) {
