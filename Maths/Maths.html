@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Maths">
+        <meta name="author" content="William">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Maths</title>
+        <link rel="stylesheet" href="./../style.css">
+        <script type="text/javascript" src="Maths_script.js"></script>
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="text-center" id="title">Practices</h1>
+            <p class="description text-center" id="description">
+                Have you practised? If not, let's get started!
+            </p>
+        </header>
+        <div class="container">
+            <div class="container" id="container_1">
+                    <div class="form-group">
+                            <label for="first_num">How many digits for the first number?(Enter 2-5)</label>
+                            <input
+                                    class="form-control"
+                                    type="number"
+                                    id="first_num"
+                                    name="first_num"/>
+                            <!--
+                            min="2"
+                            max="5"
+                            step="1"
+                            required
+                            -->
+                        </div>
+                    <div class="form-group">
+                            <label for="second_num">How many digits for the second number?(Enter 2-5)</label>
+                            <input
+                                    class="form-control"
+                                    type="number"
+                                    id="second_num"
+                                    name="second_num"/>
+                                <!--
+                   min="2"
+                   max="5"
+                   step="1"
+                   required
+                   -->
+
+                        </div>
+                    <div class="form-group">
+                            <p>Choose the operation:</p>
+                            <label > + <input type="radio" id="+" name="operator" class="input-radio" value="+">
+                            </label>
+                            <label> − <input type="radio" id="-" name="operator" class="input-radio" value="-">
+                            </label>
+                            <label> × <input type="radio" id="*"  name="operator" class="input-radio" value="*"> <!--required -->
+                            </label>
+                            <label> ÷ <input type="radio" id="/" name="operator" class="input-radio" value="/">
+                            </label>
+                        </div>
+                    <div class="form-group">
+                            <button type="button" class="submit-button" id="submit_form" onclick="starting()">Let's go!</button>
+                        </div>
+                </div>
+            <div class="container" id="container_2" style="display: none">
+                    <div class="form-group">
+                        <label for="question">Question: </label>
+                        <textarea class="form-control" id="question" readonly></textarea>
+                        <label for="answer">Answer: </label>
+                        <input style="margin-bottom: 50px" class="form-control" type="number" id="answer"> <!-- required -->
+                        <button class="submit-button" type="button" onclick="evaluating()">Enter</button>
+                    </div>
+                </div>
+            <div id="container_for_table" class="container" style="display: none">
+
+            </div>
+            <div class="container" id="data">
+                <label for="value-correct">Correct</label><textarea id="value-correct" class="text-center" readonly>0</textarea>
+                <label for="value-incorrect">Incorrect</label><textarea id="value-incorrect" class="text-center" readonly>0</textarea>
+                <label for="total_today">The total you have done today</label><textarea id="total_today" class="text-center" readonly>0</textarea>
+            </div>
+        </div>
+        <footer>
+        <button id="view_records" class="text-center submit-button" onclick="view_records()">Want to know how many questions you have done?</button>
+        <button class="text-center submit-button" onclick="window.location.href='index.html'">Choose the type of questions again?</button>
+        <p class="description text-center">By William T.</p>
+        <p class="description text-center">All rights reserved</p>
+    </footer>
+    </body>
+</html>
