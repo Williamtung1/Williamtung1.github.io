@@ -205,16 +205,14 @@ function count() {
             incorrect++;
             document.getElementById('value-incorrect').value = incorrect;
         }
-        if (array[i].Date === date && array[i].Answer === "Correct") {
-            correct++;
-            document.getElementById('value-correct').value = correct;
-        }
-        let type_of_question = array.Question.reduce(function (acc, curr) {
+        /*let type_of_question = array.Question.reduce(function (acc, curr) {
             return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc;
         }, {});
         for (const [key, val] of Object.entries(type_of_question)) {
             alert(key + " " + val);
 
         }
+
+         */
     }
 }
