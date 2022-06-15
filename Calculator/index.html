@@ -7,48 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-        //function that display value
-        function displaying (value) {
-            document.getElementById("text").value += value;
-        }
-        //function that evaluate the answer and return result
-        function evaluating ()  {
-            let input = document.getElementById("text").value;
-            document.getElementById("text").value = eval(input);
-        }
-        //function that clear the display
-        function clear() {
-            document.getElementById("text").value = '';
-        }
-    </script>
-
+    <script src="main.js"></script>
 </head>
-<body>
-<label for="text"></label><textarea id="text"></textarea>
-<br>
-<button class="function_button" style="background-color: #5f5e61" id="ac" onclick="clear()">AC</button>
-<button class="function_button" id="+/-">+/-</button>
-<button class="function_button" id="%" onclick="displaying('')">%</button>
-<button class="function_button" id="/" onclick="displaying('/')">÷</button>
-<br>
-<button type="button" id="7" onclick="displaying('7')">7</button>
-<button type="button" id="8" onclick="displaying('8')">8</button>
-<button type="button" id="9" onclick="displaying('9')">9</button>
-<button class="function_button" id="*" onclick="displaying('*')">×</button>
-<br>
-<button type="button" id="4" onclick="displaying('4')">4</button>
-<button type="button" id="5" onclick="displaying('5')">5</button>
-<button type="button" id="6" onclick="displaying('6')">6</button>
-<button class="function_button" onclick="displaying('-')">-</button>
-<br>
-<button type="button" id="1" onclick="displaying('1')">1</button>
-<button type="button" id="2" onclick="displaying('2')">2</button>
-<button type="button" id="3" onclick="displaying('3')">3</button>
-<button class="function_button" id="+" onclick="displaying('+')">+</button>
-<br>
-<button style="width: 110px" id="0" onclick="displaying('0')">0</button>
-<button type="button" id="." onclick="displaying('.')">.</button>
-<button class="function_button" onclick="evaluating ()">=</button>
-</body>
+    <body>
+    <label for="text"></label><textarea id="text"></textarea>
+    <br>
+    <button class="function_button" id="ac" onclick="clear()" style="background-color: #5f5e61">AC</button>
+    <button class="function_button" id="/" onclick="displaying('/')">÷</button>
+    <br>
+    <button type="button" id="7" onclick="displaying('7')">7</button>
+    <button type="button" id="8" onclick="displaying('8')">8</button>
+    <button type="button" id="9" onclick="displaying('9')">9</button>
+    <button class="function_button" id="*" onclick="displaying('*')">×</button>
+    <br>
+    <button type="button" id="4" onclick="displaying('4')">4</button>
+    <button type="button" id="5" onclick="displaying('5')">5</button>
+    <button type="button" id="6" onclick="displaying('6')">6</button>
+    <button class="function_button" onclick="displaying('-')">-</button>
+    <br>
+    <button type="button" id="1" onclick="displaying('1')">1</button>
+    <button type="button" id="2" onclick="displaying('2')">2</button>
+    <button type="button" id="3" onclick="displaying('3')">3</button>
+    <button class="function_button" id="+" onclick="displaying('+')">+</button>
+    <br>
+    <button style="width: 110px" id="0" onclick="displaying('0')">0</button>
+    <button type="button" id="." onclick="displaying('.')">.</button>
+    <button class="function_button" onclick="evaluating ()">=</button>
+    </body>
 </html>
