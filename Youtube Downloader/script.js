@@ -1,4 +1,4 @@
-window.onload=function(){
+
     let convertBtn = document.querySelector('.convert-button');
     let URLinput = document.querySelector('.URL-input');
     convertBtn.addEventListener('click', () => {
@@ -8,4 +8,3 @@ window.onload=function(){
     function sendURL(URL) {
         window.location.href = `http://localhost:4000/download?URL=${URL}`;
     }
-}
