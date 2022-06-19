@@ -12,7 +12,14 @@
     <body>
       <div class="topnav">
           <a href="./../index.html">Home</a>
-          <a href="./Maths/Maths.html">Maths</a>
+          <div class="dropdown">
+            <button class="dropbtn" onclick="window.location.href=./Maths.html">Maths</button>
+            <div class="dropdown-content">
+              <a onclick="view_records()">Want to know how many questions you have done?</a>
+              <a onclick="window.location.href='./Maths.html'">Choose the type of questions again?</a>
+              <a onclick="view_table()">View In Detail</a>
+            </div>
+          </div>
       </div>
         <header class="header">
             <h1 class="text-center" id="title">Practices</h1>
