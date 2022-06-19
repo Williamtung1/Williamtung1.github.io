@@ -211,8 +211,7 @@ function count() {
     let correct = 0;
     let incorrect = 0;
     let total_today = 0;
-
-
+    let three_digits_times_two_digits = 0;
 
     const today = new Date();
     let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
@@ -232,14 +231,13 @@ function count() {
             incorrect++;
             document.getElementById('value-incorrect').value = incorrect;
         }
-        /*let type_of_question = array.Question.reduce(function (acc, curr) {
-            return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc;
-        }, {});
-        for (const [key, val] of Object.entries(type_of_question)) {
-            alert(key + " " + val);
+        if (array[i].Date === date &&
+            array[i].Answer === "Correct" &&
+            array[i].Question === "2 digit(s) *3 digit(s)" ||
+            array[i].Question === "3 digit(s) *2 digit(s)")
+        {
+            three_digits_times_two_digits++;
 
         }
-
-         */
     }
 }
