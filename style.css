@@ -100,6 +100,11 @@ textarea {
     line-height: inherit;
 }
 
+textarea {
+    border-radius: 0.5rem;
+
+}
+
 .form-group {
     margin: 0 auto 1.25rem auto;
     padding: 0.25rem;

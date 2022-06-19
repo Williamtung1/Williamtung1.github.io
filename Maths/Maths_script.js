@@ -18,8 +18,6 @@ function view_table() {
     x.style.display = "none";
     let y = document.getElementById('container_for_table');
     y.style.display = "block";
-    let z = document.getElementById('view_records');
-    z.style.display = "none";
     let a = document.getElementById('container_1');
     a.style.display = "none";
     setting_the_table();
@@ -29,8 +27,6 @@ function view_records() {
     x.style.display = "none";
     let y = document.getElementById('data');
     y.style.display = "block";
-    let z = document.getElementById('view_records');
-    z.style.display = "none";
     let a = document.getElementById('container_1');
     a.style.display = "none";
 }
