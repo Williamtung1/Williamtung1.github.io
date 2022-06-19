@@ -9,14 +9,24 @@ window.onload = function () {
 }
 
 function starting() {
-    let x = document.getElementById('container_1');
-    x.style.display = "none";
-    let y = document.getElementById('container_2');
-    y.style.display = "block";
-    let z = document.getElementById('description');
-    z.style.display = "none";
-    setting_question();
-
+    // validation of the form
+    let first_num_input = document.getElementById('first_num');
+    let second_num_input = document.getElementById('second_num');
+    let operator = document.querySelector('input[name="operator"]:checked');
+    if (first_num_input.validity.valid && second_num_input.validity.valid && operator != null) {
+        console.log(first_num_input.validity);
+        console.log(second_num_input.validity);
+        console.log(operator.validity);
+        let x = document.getElementById('container_1');
+        x.style.display = "none";
+        let y = document.getElementById('container_2');
+        y.style.display = "block";
+        let z = document.getElementById('description');
+        z.style.display = "none";
+        setting_question();
+    } else {
+        alert("Fill in the gaps while satisfying the requirement");
+    }
 }
 
 function view_table() {

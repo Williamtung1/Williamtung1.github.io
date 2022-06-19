@@ -29,7 +29,7 @@
         </header>
         <div class="container">
             <div class="container" id="container_1">
-                <form action="#" method="get">
+                <form action="#" method="get" onsubmit="return false;">
                         <div class="form-group">
                                 <label for="first_num">How many digits for the first number?(Enter 2-5)</label>
                                 <input
@@ -72,7 +72,7 @@
                         </div>
                 </form>
             </div>
-            <div class="container" id="container_2">
+            <div class="container" id="container_2" style="display: none">
                     <div class="form-group">
                         <label for="question">Question: </label>
                         <textarea class="form-control" id="question" readonly></textarea>
@@ -81,9 +81,9 @@
                         <button class="submit-button" type="button" onclick="evaluating()">Enter</button>
                     </div>
                 </div>
-            <div id="container_for_table" class="container">
+            <div id="container_for_table" class="container" style="display: none">
             </div>
-            <div class="container" id="data">
+            <div class="container" id="data" style="display: none">
                 <label for="value-correct">Correct</label><textarea id="value-correct" class="text-center" readonly>0</textarea>
                 <label for="value-incorrect">Incorrect</label><textarea id="value-incorrect" class="text-center" readonly>0</textarea>
                 <label for="total_today">The total you have done today</label><textarea id="total_today" class="text-center" readonly>0</textarea>
