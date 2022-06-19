@@ -72,9 +72,8 @@
                     </div>
                 </div>
             <div id="container_for_table" class="container" style="display: none">
-
             </div>
-            <div class="container" id="data">
+            <div class="container" id="data" style="display: none">
                 <label for="value-correct">Correct</label><textarea id="value-correct" class="text-center" readonly>0</textarea>
                 <label for="value-incorrect">Incorrect</label><textarea id="value-incorrect" class="text-center" readonly>0</textarea>
                 <label for="total_today">The total you have done today</label><textarea id="total_today" class="text-center" readonly>0</textarea>
@@ -82,7 +81,8 @@
         </div>
         <footer>
         <button id="view_records" class="text-center submit-button" onclick="view_records()">Want to know how many questions you have done?</button>
-        <button class="text-center submit-button" onclick="window.location.href='index.html'">Choose the type of questions again?</button>
+        <button class="text-center submit-button" onclick="window.location.href='./Maths.html'">Choose the type of questions again?</button>
+        <button class="text-center submit-button" onclick="view_table()">View In Detail</button>
         <p class="description text-center">By William T.</p>
         <p class="description text-center">All rights reserved</p>
     </footer>

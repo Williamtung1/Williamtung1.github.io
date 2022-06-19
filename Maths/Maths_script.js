@@ -13,7 +13,7 @@ function starting() {
     setting_question();
 }
 
-function view_records() {
+function view_table() {
     let x = document.getElementById('container_2');
     x.style.display = "none";
     let y = document.getElementById('container_for_table');
@@ -24,6 +24,17 @@ function view_records() {
     a.style.display = "none";
     setting_the_table();
 }
+function view_records() {
+    let x = document.getElementById('container_2');
+    x.style.display = "none";
+    let y = document.getElementById('data');
+    y.style.display = "block";
+    let z = document.getElementById('view_records');
+    z.style.display = "none";
+    let a = document.getElementById('container_1');
+    a.style.display = "none";
+}
+
 
 function get_random_integer(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
