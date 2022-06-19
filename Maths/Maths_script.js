@@ -1,5 +1,11 @@
 window.onload = function () {
     count();
+    let x = document.getElementById('container_2');
+    x.style.display = "none";
+    let y = document.getElementById('container_for_table');
+    y.style.display = "none";
+    let z = document.getElementById('data');
+    z.style.display = "none";
 }
 
 function starting() {
@@ -18,6 +24,8 @@ function view_table() {
     x.style.display = "none";
     let y = document.getElementById('container_for_table');
     y.style.display = "block";
+    let z = document.getElementById('data');
+    z.style.display = "none";
     let a = document.getElementById('container_1');
     a.style.display = "none";
     setting_the_table();
@@ -27,6 +35,8 @@ function view_records() {
     x.style.display = "none";
     let y = document.getElementById('data');
     y.style.display = "block";
+    let z = document.getElementById('container_for_table');
+    z.style.display = "none";
     let a = document.getElementById('container_1');
     a.style.display = "none";
 }
