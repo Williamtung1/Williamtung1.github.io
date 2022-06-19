@@ -9,7 +9,6 @@ window.onload = function () {
 }
 
 function starting() {
-
     let x = document.getElementById('container_1');
     x.style.display = "none";
     let y = document.getElementById('container_2');
@@ -17,6 +16,7 @@ function starting() {
     let z = document.getElementById('description');
     z.style.display = "none";
     setting_question();
+
 }
 
 function view_table() {
@@ -49,14 +49,14 @@ function get_random_integer(min, max) {
 function setting_question() {
     let first_num_input = document.getElementById('first_num').value;
     let second_num_input = document.getElementById('second_num').value;
+    let operator = document.querySelector('input[name="operator"]:checked').value;
     let first_number_max = Math.pow(10, Number(first_num_input));
-    let first_number_min = Math.pow(10, Number(first_num_input-1));
+    let first_number_min = Math.pow(10, Number(first_num_input - 1));
     let second_number_max = Math.pow(10, Number(second_num_input));
-    let second_number_min = Math.pow(10, Number(second_num_input-1));
+    let second_number_min = Math.pow(10, Number(second_num_input - 1));
     // stuff we need
     let first_number = get_random_integer(first_number_min, first_number_max);
     let second_number = get_random_integer(second_number_min, second_number_max)
-    let operator = document.querySelector('input[name="operator"]:checked').value;
     document.getElementById('question').innerHTML = first_number.toString() + operator + second_number.toString();
     document.getElementById('answer').value = "";
 }
