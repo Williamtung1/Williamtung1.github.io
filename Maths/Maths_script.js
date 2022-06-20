@@ -7,6 +7,7 @@ window.onload = function () {
     y.style.display = "none";
     let z = document.getElementById('data');
     z.style.display = "none";
+    //setChart();
 }
 
 function starting() {
@@ -213,7 +214,7 @@ function count() {
     let correct = 0;
     let incorrect = 0;
     let total_today = 0;
-    let three_digits_times_two_digits = 0;
+    let notTwoTimesThree = 0;
 
     const today = new Date();
     let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
@@ -234,34 +235,58 @@ function count() {
             document.getElementById('value-incorrect').value = incorrect;
         }
         if (array[i].Date === date &&
-            array[i].Answer === "Correct" &&
-            array[i].Question === "2 digit(s) *3 digit(s)" ||
-            array[i].Question === "3 digit(s) *2 digit(s)")
+            array[i].Question !== "2 digit(s) *3 digit(s)" &&
+            array[i].Question !== "3 digit(s) *2 digit(s)")
         {
-            three_digits_times_two_digits++;
-
+            notTwoTimesThree++;
+            document.getElementById('non_2*3').style.display = "block";
+            document.getElementById('non_2*3_label').style.display = "block";
+            document.getElementById('non_2*3').value = notTwoTimesThree;
         }
     }
 }
-
-function setChart() {
-    const myChart = new Chart('myChart', {
-        type:"pie",
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
+/*
+ function setChart() {
+    const labels = [
+        '3 x 2 digits',
+        'Other',
+    ];
+    const data = {
+        labels: labels,
         datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
+            label: 'Correct questions that have done today',
             backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                /* Other nice colours
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'*/
+            /*
             ],
-            hoverOffset: 4
-        }]
-    });
-}
-setChart()
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(75, 192, 192, 1)',
+            */
+            /* Other nice colours
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1,
+            data: [889, 111],
+            }]
+            };
+    const config = {
+    type: 'pie',
+    data: data,
+    options: {},
+    };
+    const myChart = new Chart(
+    document.getElementById('myChart'),
+    config,
+    );
+    }
+*/

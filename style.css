@@ -250,3 +250,11 @@ td, th {
 tr:nth-child(even) {
     background-color: #84b1ec;
 }
+
+canvas {
+    background: white;
+}
+
+#non_2\*3, #non_2\*3_label {
+    display: none;
+}
