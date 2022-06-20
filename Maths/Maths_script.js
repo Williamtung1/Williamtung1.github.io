@@ -1,3 +1,4 @@
+
 window.onload = function () {
     count();
     let x = document.getElementById('container_2');
@@ -49,6 +50,7 @@ function view_records() {
     z.style.display = "none";
     let a = document.getElementById('container_1');
     a.style.display = "none";
+    //setChart();
 }
 
 
@@ -241,3 +243,25 @@ function count() {
         }
     }
 }
+
+function setChart() {
+    const myChart = new Chart('myChart', {
+        type:"pie",
+        labels: [
+            'Red',
+            'Blue',
+            'Yellow'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [300, 50, 100],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+        }]
+    });
+}
+setChart()

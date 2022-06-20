@@ -7,6 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Maths</title>
         <link rel="stylesheet" href="./../style.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+
 
     </head>
     <body>
@@ -88,6 +90,7 @@
                 <label for="value-correct">Correct</label><textarea id="value-correct" class="text-center" readonly>0</textarea>
                 <label for="value-incorrect">Incorrect</label><textarea id="value-incorrect" class="text-center" readonly>0</textarea>
                 <label for="total_today">The total you have done today</label><textarea id="total_today" class="text-center" readonly>0</textarea>
+                <canvas id="myChart" width="400" height="400" aria-label="types" role="img"></canvas>
             </div>
         </div>
         <footer>
