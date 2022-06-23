@@ -7,7 +7,7 @@ window.onload = function () {
     y.style.display = "none";
     let z = document.getElementById('data');
     z.style.display = "none";
-    //setChart();
+
 }
 
 function starting() {
@@ -228,8 +228,6 @@ function count() {
             correct++;
             document.getElementById('value-correct').value = correct;
         }
-
-
         if (array[i].Date === date && array[i].Answer === "Incorrect") {
             incorrect++;
             document.getElementById('value-incorrect').value = incorrect;
@@ -244,13 +242,30 @@ function count() {
             document.getElementById('non_2*3').value = notTwoTimesThree;
         }
     }
+    let questionDoneTodayCorrectly = array.filter(items => items.Date === date && items.Answer === "Correct");
+    let result = { };
+    for(let i = 0; i < questionDoneTodayCorrectly.length; ++i) {
+        if(!result[questionDoneTodayCorrectly[i].Question])
+            result[questionDoneTodayCorrectly[i].Question] = 0;
+        ++result[questionDoneTodayCorrectly[i].Question];
+    }
+
+    console.log(result);
+    let chartOfType1 = [];
+    let chartOfType2 = [];
+    for (let i = 0; i < result.length; i++) {
+        chartOfType1.push(Object.keys(result));
+        chartOfType2.push(Object.value(result));
+        console.log(chartOfType1);
+        console.log(chartOfType2);
+    }
+    setChart(chartOfType1, chartOfType2)
+
+    //const countsSorted = Object.entries(counts).sort(([_, a], [__, b]) => a - b);
 }
-/*
- function setChart() {
-    const labels = [
-        '3 x 2 digits',
-        'Other',
-    ];
+
+ function setChart(labels, info) {
+
     const data = {
         labels: labels,
         datasets: [{
@@ -258,25 +273,25 @@ function count() {
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
-                /* Other nice colours
+
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'*/
-            /*
+                'rgba(255, 159, 64, 0.2)'
+
             ],
             borderColor: [
                 'rgba(54, 162, 235, 1)',
                 'rgba(75, 192, 192, 1)',
-            */
-            /* Other nice colours
+
+
             'rgba(255, 99, 132, 1)',
             'rgba(255, 206, 86, 1)',
             'rgba(153, 102, 255, 1)',
             'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 1,
-            data: [889, 111],
+            data: info,
             }]
             };
     const config = {
@@ -289,4 +304,4 @@ function count() {
     config,
     );
     }
-*/
+
