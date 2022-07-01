@@ -322,43 +322,45 @@ ul li.checked::before {
 }
 
 /* Style the header */
-.header {
-    background-color: #80bdff;
+.header1 {
+    background-color: inherit;
     padding: 30px 40px;
     color: white;
     text-align: center;
 }
 
 /* Clear floats after the header */
-.header:after {
+.header1:after {
     content: "";
     display: table;
     clear: both;
 }
 
 /* Style the input */
-input {
-    margin: 0;
+#myInput {
+    margin: 0.2rem auto;
     border: none;
-    border-radius: 0;
-    width: 75%;
+    border-radius: 0.5rem;
+    width: 50%;
     padding: 10px;
-    float: left;
+    text-align: center;
     font-size: 16px;
+    display: block;
 }
 
 /* Style the "Add" button */
 .addBtn {
     padding: 10px;
     width: 25%;
+    margin: 0 auto;
     background: #d9d9d9;
     color: #4074f3;
-    float: left;
     text-align: center;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-    border-radius: 0;
+    border-radius: 0.5rem;
+    display: block;
 }
 
 .addBtn:hover {
