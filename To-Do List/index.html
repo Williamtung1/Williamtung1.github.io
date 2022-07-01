@@ -3,23 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>To-Do List</title>
-    <link rel="stylesheet" href="./styles.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="./../style.css">
+
 </head>
 <body>
-<div id="myDIV" class="header">
-    <h2>My To Do List</h2>
-    <label for="myInput"></label><input type="text" id="myInput" placeholder="Title...">
-    <span onclick="newElement()" class="addBtn">Add</span>
+<div class="topnav">
+    <a href="./index.html">Home</a>
+    <a href="./Maths/Maths.html">Maths</a>
 </div>
+<header class="header">
+    <h2 class="text-center">My To Do List</h2>
+    <label for="myInput"></label><input type="text" id="myInput" placeholder="Title...">
+    <button onclick="newElement()" class="addBtn">Add</button>
+</header>
+<main>
+    <div class="container">
+        <ul id="myUL">
+            <li>Doing Hegarty Maths</li>
+            <li>Revising</li>
+            <li>Doing Duolingo</li>
+            <li>Computing & Programming</li>
+            <li>Practise Instruments</li>
+            <li>Doing Homework</li>
+            <li>Reading</li>
+            <li>Packing Up</li>
+        </ul>
+    </div>
+</main>
+<footer>
 
-<ul id="myUL">
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-</ul>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
