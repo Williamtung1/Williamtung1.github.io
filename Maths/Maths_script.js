@@ -60,6 +60,7 @@ function startingQuestion() {
     document.getElementById('container_2').style.display="block";
     document.getElementById('progressBar').style.display="block";
     setting_question();
+    setBar();
 }
 
 function get_random_integer(min, max) {
@@ -109,7 +110,7 @@ function evaluating() {
             message.Answer = "Correct";
             writing_record(message);
             setting_question();
-            setBar();
+
         } else {
             alert("Sorry, please try again.")
             message.Answer = "Incorrect";
@@ -121,57 +122,60 @@ function evaluating() {
         message.Answer = "Correct";
         writing_record(message);
         setting_question();
-        setBar();
+
     } else {
         alert("Please try again.");
         message.Answer = "Incorrect";
         writing_record(message);
         document.getElementById('answer').value = "";
     }
+    setBar();
 }
 
 function setBar() {
-    const today = new Date();
-    let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
-    let array = JSON.parse(localStorage.getItem('record'));
-    let targetToday;
-    if (today.getDay() === 0 || 6) {
-        targetToday = 200;
-    } else {
-        targetToday = 100;
-    }
-    let bar = document.getElementById("progressBar");
-    let width;
-    let correct = 0;
-    for(let i = 0; i < array.length; i++){
-        if (array[i].Date === date && array[i].Answer === "Correct") {
-            correct++;
-        }
-    }
+    if (localStorage.getItem('record') !== null) {
+        let array = JSON.parse(localStorage.getItem('record'));
+        const today = new Date();
+        let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
 
-    width = correct / targetToday * 100;
-    if (width >= 100) {
-        let modal = document.getElementById("modal");
-        // Get the <span> element that closes the modal
-        let span = document.getElementsByClassName("close1")[0];
-        modal.style.display = "block";
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
+        let targetToday;
+        if (today.getDay() === 0 || 6) {
+            targetToday = 200;
+        } else {
+            targetToday = 100;
         }
-
-        // When the user clicks anywhere outside the modal, close it
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
+        let bar = document.getElementById("progressBar");
+        let width;
+        let correct = 0;
+        for(let i = 0; i < array.length; i++){
+            if (array[i].Date === date && array[i].Answer === "Correct") {
+                correct++;
             }
         }
-    } else {
-        bar.style.width = width + "%";
-        bar.innerHTML = String(correct);
-        //bar.innerHTML = width + "%";
-    }
 
+        width = correct / targetToday * 100;
+        if (width >= 100) {
+            let modal = document.getElementById("modal");
+            // Get the <span> element that closes the modal
+            let span = document.getElementsByClassName("close1")[0];
+            modal.style.display = "block";
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside the modal, close it
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            }
+        } else {
+            bar.style.width = width + "%";
+            bar.innerHTML = String(correct);
+            //bar.innerHTML = width + "%";
+        }
+    }
 }
 
 function writing_record(message) {
@@ -263,7 +267,7 @@ function setting_the_table() {
 
 function viewRecords() {
     //fix the bug by setting the table afterwards
-    window.location="./info.html"
+
     setting_the_table();
     accordion();
 }
