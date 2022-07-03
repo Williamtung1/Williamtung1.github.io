@@ -56,6 +56,7 @@ function setInfo() {
 function startingQuestion() {
     document.getElementById('hiddenContainer').style.display="none";
     document.getElementById('container_2').style.display="block";
+    setBar();
     setting_question();
 
 }
