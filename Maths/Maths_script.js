@@ -67,6 +67,7 @@ function get_random_integer(min, max) {
 }
 
 function setting_question() {
+    let set = JSON.parse(localStorage.getItem('info'));
     let first_num_input = set[0];
     let second_num_input = set[1];
     let operator = set[2];
