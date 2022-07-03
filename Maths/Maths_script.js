@@ -81,6 +81,7 @@ function setting_question() {
 }
 
 function evaluating() {
+
     let set = JSON.parse(localStorage.getItem('info'));
     let first_num_input = set[0];
     let second_num_input = set[1];
@@ -123,6 +124,33 @@ function evaluating() {
         writing_record(message);
         document.getElementById('answer').value = "";
     }
+    setBar();
+}
+
+function setBar() {
+    const today = new Date();
+    let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
+    let array = JSON.parse(localStorage.getItem('record'));
+    let targetToday;
+    if (today.getDay() === 0 || 6) {
+        targetToday = 200;
+    } else {
+        targetToday = 100;
+    }
+    console.log(targetToday)
+    console.log(today.getDay())
+    let bar = document.getElementById("progressBar");
+    let width;
+    let correct = 0;
+    for(let i = 0; i < array.length; i++){
+        if (array[i].Date === date && array[i].Answer === "Correct") {
+            correct++;
+        }
+    }
+    width = correct / targetToday * 100;
+    bar.style.width = width + "%";
+    bar.innerHTML = width + "%";
+
 }
 
 function writing_record(message) {
@@ -144,6 +172,7 @@ function writing_record(message) {
         localStorage.setItem('record', x);
     }
 }
+
 function setting_the_table() {
     // set the table
 
