@@ -152,7 +152,7 @@ function setBar() {
     if (width >= 100) {
         let modal = document.getElementById("modal");
         // Get the <span> element that closes the modal
-        let span = document.getElementsByClassName("close")[0];
+        let span = document.getElementsByClassName("close1")[0];
         modal.style.display = "block";
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
