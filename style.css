@@ -366,3 +366,16 @@ ul li.checked::before {
 .addBtn:hover {
     background-color: #bbb;
 }
+#Progress {
+    width: 100%;
+    background-color: grey;
+}
+
+#progressBar {
+    width: 1%;
+    height: 30px;
+    background-color: #004b80;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 30px; /* To center it vertically */
+    color: white;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Maths">
+    <meta name="author" content="William">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths</title>
+    <link rel="stylesheet" href="./../style.css">
+</head>
+<body>
+<div class="container" id="container_2">
+    <div class="form-group">
+        <label for="question">Question: </label>
+        <textarea class="form-control" id="question" readonly></textarea>
+        <label for="answer">Answer: </label>
+        <input style="margin-bottom: 50px" class="form-control" type="number" id="answer"> <!-- required -->
+        <button class="submit-button" type="button" onclick="evaluating()">Enter</button>
+
+    </div>
+    <video style="display: none"></video>
+</div>
+<script type="text/javascript" src="Maths_script.js"></script>
+</body>
+</html>

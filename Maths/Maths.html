@@ -7,8 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Maths</title>
         <link rel="stylesheet" href="./../style.css">
-
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body>
       <div class="topnav">
@@ -16,12 +15,14 @@
           <div class="dropdown">
             <button class="dropbtn" onclick="window.location.href='./Maths.html'">Maths</button>
             <div class="dropdown-content">
-              <a onclick="view_records()">Want to know how many questions you have done?</a>
-              <a onclick="window.location.href='./Maths.html'">Choose the type of questions again?</a>
-              <a onclick="view_table()">View In Detail</a>
+              <a onclick="viewRecords()">View Records in detail</a>
+              <a onclick="window.location.href='./Maths.html'">Choosing Questions</a>
             </div>
           </div>
           <a href="./../To-Do%20List/index.html">To-Do List</a>
+      </div>
+      <div class="Progress">
+          <div id="progressBar"></div>
       </div>
         <header class="header">
             <h1 class="text-center" id="title">Practices</h1>
@@ -31,7 +32,7 @@
         </header>
         <div class="container">
             <div class="container" id="container_1">
-                <form action="#" method="get" onsubmit="return false;">
+                <form action="#" method="post" onsubmit="return false;">
                         <div class="form-group">
                                 <label for="first_num">How many digits for the first number?(Enter 2-5)</label>
                                 <input
@@ -74,29 +75,11 @@
                         </div>
                 </form>
             </div>
-            <div class="container" id="container_2" style="display: none">
-                    <div class="form-group">
-                        <label for="question">Question: </label>
-                        <textarea class="form-control" id="question" readonly></textarea>
-                        <label for="answer">Answer: </label>
-                        <input style="margin-bottom: 50px" class="form-control" type="number" id="answer"> <!-- required -->
-                        <button class="submit-button" type="button" onclick="evaluating()">Enter</button>
-                    </div>
-                    <video style="display: none"></video>
-                </div>
-            <div id="container_for_table" class="container" style="display: none">
-            </div>
-            <div class="container" id="data" style="display: none">
-                <label for="value-correct">Correct</label><textarea id="value-correct" class="text-center" readonly>0</textarea>
-                <label for="value-incorrect">Incorrect</label><textarea id="value-incorrect" class="text-center" readonly>0</textarea>
-                <label for="total_today">The total you have done today</label><textarea id="total_today" class="text-center" readonly>0</textarea>
-                <label for="non_2*3" id="non_2*3_label">Not doing 2 digits multiplying to 3 digits?</label><textarea id="non_2*3" class="text-center" readonly>0</textarea>
-            </div>
         </div>
         <footer>
         <p class="description text-center">By William T.</p>
         <p class="description text-center">All rights reserved</p>
-    </footer>
+        </footer>
       <script type="text/javascript" src="Maths_script.js"></script>
     </body>
 </html>

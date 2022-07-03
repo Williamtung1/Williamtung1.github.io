@@ -1,77 +1,51 @@
 
 window.onload = function () {
     count();
-    let x = document.getElementById('container_2');
-    x.style.display = "none";
-    let y = document.getElementById('container_for_table');
-    y.style.display = "none";
-    let z = document.getElementById('data');
-    z.style.display = "none";
-
 }
 
 function starting() {
     // validation of the form
-    let first_num_input = document.getElementById('first_num');
-    let second_num_input = document.getElementById('second_num');
-    let operator = document.querySelector('input[name="operator"]:checked');
+    //let first_num_input = document.getElementById('first_num');
+    //let second_num_input = document.getElementById('second_num');
+    //let operator = document.querySelector('input[name="operator"]:checked');
     if (first_num_input.validity.valid && second_num_input.validity.valid && operator != null) {
-        console.log(first_num_input.validity);
-        console.log(second_num_input.validity);
-        console.log(operator.validity);
-        let x = document.getElementById('container_1');
-        x.style.display = "none";
-        let y = document.getElementById('container_2');
-        y.style.display = "block";
-        let z = document.getElementById('description');
-        z.style.display = "none";
-        setting_question();
+        //let first_num_input = document.getElementById('first_num').value;
+        //let second_num_input = document.getElementById('second_num').value;
+        //let operator = document.querySelector('input[name="operator"]:checked').value;
+        let first_number_max = Math.pow(10, Number(first_num_input));
+        let first_number_min = Math.pow(10, Number(first_num_input - 1));
+        let second_number_max = Math.pow(10, Number(second_num_input));
+        let second_number_min = Math.pow(10, Number(second_num_input - 1));
+        // stuff we need
+        let first_number = get_random_integer(first_number_min, first_number_max);
+        let second_number = get_random_integer(second_number_min, second_number_max);
+
+        window.location="question.php";
+        console.log(first_number + "," + second_number);
+        window.onload = function () {
+            document.getElementById('question').innerHTML = first_number.toString() + operator + second_number.toString();
+            document.getElementById('answer').value = "";
+            console.log(first_number.toString() + operator + second_number.toString())
+        }
+
     } else {
         alert("Fill in the gaps while satisfying the requirement");
     }
 }
 
-function view_table() {
-    let x = document.getElementById('container_2');
-    x.style.display = "none";
-    let y = document.getElementById('container_for_table');
-    y.style.display = "block";
-    let z = document.getElementById('data');
-    z.style.display = "none";
-    let a = document.getElementById('container_1');
-    a.style.display = "none";
+function viewRecords() {
     setting_the_table();
+    window.location="./info.html"
 }
-function view_records() {
-    let x = document.getElementById('container_2');
-    x.style.display = "none";
-    let y = document.getElementById('data');
-    y.style.display = "block";
-    let z = document.getElementById('container_for_table');
-    z.style.display = "none";
-    let a = document.getElementById('container_1');
-    a.style.display = "none";
-    //setChart();
-}
-
 
 function get_random_integer(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
 function setting_question() {
-    let first_num_input = document.getElementById('first_num').value;
-    let second_num_input = document.getElementById('second_num').value;
-    let operator = document.querySelector('input[name="operator"]:checked').value;
-    let first_number_max = Math.pow(10, Number(first_num_input));
-    let first_number_min = Math.pow(10, Number(first_num_input - 1));
-    let second_number_max = Math.pow(10, Number(second_num_input));
-    let second_number_min = Math.pow(10, Number(second_num_input - 1));
-    // stuff we need
-    let first_number = get_random_integer(first_number_min, first_number_max);
-    let second_number = get_random_integer(second_number_min, second_number_max)
-    document.getElementById('question').innerHTML = first_number.toString() + operator + second_number.toString();
-    document.getElementById('answer').value = "";
+
+
+
 }
 
 function evaluating() {
@@ -248,5 +222,27 @@ function count() {
         if(!result[questionDoneTodayCorrectly[i].Question])
             result[questionDoneTodayCorrectly[i].Question] = 0;
         ++result[questionDoneTodayCorrectly[i].Question];
+    }
+}
+
+let i = 0;
+
+function move() {
+    if (i === 0) {
+        i = 1;
+        let elem = document.getElementById("progressBar");
+        let width = 10;
+        let id = setInterval(frame, 10);
+
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+                i = 0;
+            } else {
+                width++;
+                elem.style.width = width + "%";
+                elem.innerHTML = width + "%";
+            }
+        }
     }
 }
