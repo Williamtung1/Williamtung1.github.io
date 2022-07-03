@@ -56,6 +56,7 @@ function setInfo() {
 function startingQuestion() {
     document.getElementById('hiddenContainer').style.display="none";
     document.getElementById('container_2').style.display="block";
+    document.getElementById('progressBar').style.display="block";
     setBar();
     setting_question();
 
@@ -138,8 +139,6 @@ function setBar() {
     } else {
         targetToday = 100;
     }
-    console.log(targetToday)
-    console.log(today.getDay())
     let bar = document.getElementById("progressBar");
     let width;
     let correct = 0;

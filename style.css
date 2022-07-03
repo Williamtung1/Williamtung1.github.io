@@ -378,6 +378,7 @@ ul li.checked::before {
     text-align: center; /* To center it horizontally (if you want) */
     line-height: 30px; /* To center it vertically */
     color: white;
+    display: none;
 }
 #container_2 {
     display: none;
