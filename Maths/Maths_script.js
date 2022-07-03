@@ -60,7 +60,6 @@ function startingQuestion() {
     document.getElementById('container_2').style.display="block";
     document.getElementById('progressBar').style.display="block";
     setting_question();
-
 }
 
 function get_random_integer(min, max) {
@@ -68,7 +67,6 @@ function get_random_integer(min, max) {
 }
 
 function setting_question() {
-    let set = JSON.parse(localStorage.getItem('info'));
     let first_num_input = set[0];
     let second_num_input = set[1];
     let operator = set[2];
