@@ -378,11 +378,8 @@ ul li.checked::before {
     text-align: center; /* To center it horizontally (if you want) */
     line-height: 30px; /* To center it vertically */
     color: white;
-    display: none;
 }
-#container_2 {
-    display: none;
-}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -422,7 +419,7 @@ ul li.checked::before {
 }
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-    background-color: #eee;
+    background-color: rgba(0, 94, 255, 0.5);;
     color: #444;
     cursor: pointer;
     padding: 18px;
@@ -435,13 +432,13 @@ ul li.checked::before {
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
-    background-color: #ccc;
+    background-color: #005eff;
 }
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {
     padding: 0 18px;
-    background-color: white;
+    background-color: inherit;
     display: none;
     overflow: hidden;
 }

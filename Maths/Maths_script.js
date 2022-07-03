@@ -55,13 +55,6 @@ function setInfo() {
     }
 }
 
-function startingQuestion() {
-    document.getElementById('hiddenContainer').style.display="none";
-    document.getElementById('container_2').style.display="block";
-    document.getElementById('progressBar').style.display="block";
-    setting_question();
-    setBar();
-}
 
 function get_random_integer(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
@@ -263,13 +256,6 @@ function setting_the_table() {
     let container = document.getElementById('container_for_table');
     table.setAttribute("id", "the_table");
     container.appendChild(table);
-}
-
-function viewRecords() {
-    //fix the bug by setting the table afterwards
-
-    setting_the_table();
-    accordion();
 }
 
 function accordion() {
