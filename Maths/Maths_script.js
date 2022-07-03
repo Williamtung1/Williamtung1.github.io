@@ -55,7 +55,6 @@ function setInfo() {
     }
 }
 
-
 function get_random_integer(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
