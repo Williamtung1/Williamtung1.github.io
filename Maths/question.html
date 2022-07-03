@@ -9,7 +9,17 @@
     <link rel="stylesheet" href="./../style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-<body onload="setting_question();setBar();">
+<body onload="setting_question();setBar();enterAnswer();">
+<div class="topnav">
+    <a href="./../index.html">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="window.location.href='./Maths.html'">Maths</button>
+        <div class="dropdown-content">
+            <a onclick="window.location='./info.html';">View Records in detail</a>
+            <a onclick="window.location='./Maths.html';">Choosing Questions</a>
+        </div>
+    </div>
+</div>
 <div class="Progress">
     <div id="progressBar"></div>
 </div>
@@ -18,7 +28,7 @@
         <label for="question">Question: </label>
         <textarea class="form-control" id="question" readonly></textarea>
         <label for="answer">Answer: </label>
-        <input style="margin-bottom: 50px" class="form-control" type="number" id="answer"> <!-- required -->
+        <input style="margin-bottom: 50px" class="form-control" type="number" id="answer">
         <button class="submit-button" type="button" onclick="evaluating()">Enter</button>
 
     </div>

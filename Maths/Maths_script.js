@@ -125,6 +125,17 @@ function evaluating() {
     setBar();
 }
 
+function enterAnswer() {
+    let x = document.getElementById('answer');
+    x.addEventListener("keydown", function(event) {
+        console.log(`KeyboardEvent: key='${event.key}' | code='${event.code}'`)
+        if (`${event.key}` === 'Enter') {
+            console.log("");
+            evaluating();
+        }
+    }, true);
+}
+
 function setBar() {
     if (localStorage.getItem('record') !== null) {
         let array = JSON.parse(localStorage.getItem('record'));
