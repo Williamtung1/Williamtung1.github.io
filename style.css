@@ -379,3 +379,6 @@ ul li.checked::before {
     line-height: 30px; /* To center it vertically */
     color: white;
 }
+#container_2 {
+    display: none;
+}

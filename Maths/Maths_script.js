@@ -1,41 +1,63 @@
+//execute the function when the button to records
+function count() {
+    let array = JSON.parse(localStorage.getItem('record'));
+    let correct = 0;
+    let incorrect = 0;
+    let total_today = 0;
+    let notTwoTimesThree = 0;
 
-window.onload = function () {
-    count();
-}
+    const today = new Date();
+    let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
 
-function starting() {
-    // validation of the form
-    //let first_num_input = document.getElementById('first_num');
-    //let second_num_input = document.getElementById('second_num');
-    //let operator = document.querySelector('input[name="operator"]:checked');
-    if (first_num_input.validity.valid && second_num_input.validity.valid && operator != null) {
-        //let first_num_input = document.getElementById('first_num').value;
-        //let second_num_input = document.getElementById('second_num').value;
-        //let operator = document.querySelector('input[name="operator"]:checked').value;
-        let first_number_max = Math.pow(10, Number(first_num_input));
-        let first_number_min = Math.pow(10, Number(first_num_input - 1));
-        let second_number_max = Math.pow(10, Number(second_num_input));
-        let second_number_min = Math.pow(10, Number(second_num_input - 1));
-        // stuff we need
-        let first_number = get_random_integer(first_number_min, first_number_max);
-        let second_number = get_random_integer(second_number_min, second_number_max);
-
-        window.location="question.php";
-        console.log(first_number + "," + second_number);
-        window.onload = function () {
-            document.getElementById('question').innerHTML = first_number.toString() + operator + second_number.toString();
-            document.getElementById('answer').value = "";
-            console.log(first_number.toString() + operator + second_number.toString())
+    for(let i = 0; i < array.length; i++){
+        if (array[i].Date === date) {
+            total_today++;
+            document.getElementById('total_today').value = total_today;
         }
-
-    } else {
-        alert("Fill in the gaps while satisfying the requirement");
+        if (array[i].Date === date && array[i].Answer === "Correct") {
+            correct++;
+            document.getElementById('value-correct').value = correct;
+        }
+        if (array[i].Date === date && array[i].Answer === "Incorrect") {
+            incorrect++;
+            document.getElementById('value-incorrect').value = incorrect;
+        }
+        if (array[i].Date === date &&
+            array[i].Question !== "2 digit(s) *3 digit(s)" &&
+            array[i].Question !== "3 digit(s) *2 digit(s)")
+        {
+            notTwoTimesThree++;
+            document.getElementById('non_2*3').style.display = "block";
+            document.getElementById('non_2*3_label').style.display = "block";
+            document.getElementById('non_2*3').value = notTwoTimesThree;
+        }
+    }
+    let questionDoneTodayCorrectly = array.filter(items => items.Date === date && items.Answer === "Correct");
+    let result = { };
+    for(let i = 0; i < questionDoneTodayCorrectly.length; ++i) {
+        if(!result[questionDoneTodayCorrectly[i].Question])
+            result[questionDoneTodayCorrectly[i].Question] = 0;
+        ++result[questionDoneTodayCorrectly[i].Question];
     }
 }
 
-function viewRecords() {
-    setting_the_table();
-    window.location="./info.html"
+function setInfo() {
+    // validation of the form
+    let first_num_input = document.getElementById('first_num');
+    let second_num_input = document.getElementById('second_num');
+    let operator = document.querySelector('input[name="operator"]:checked');
+    if (first_num_input.validity.valid && second_num_input.validity.valid && operator != null) {
+        window.location="./question.html";
+        let array = [first_num_input.value, second_num_input.value, operator.value];
+        localStorage.setItem('info', JSON.stringify(array));
+    }
+}
+
+function startingQuestion() {
+    document.getElementById('hiddenContainer').style.display="none";
+    document.getElementById('container_2').style.display="block";
+    setting_question();
+
 }
 
 function get_random_integer(min, max) {
@@ -43,15 +65,26 @@ function get_random_integer(min, max) {
 }
 
 function setting_question() {
-
-
-
+    let set = JSON.parse(localStorage.getItem('info'));
+    let first_num_input = set[0];
+    let second_num_input = set[1];
+    let operator = set[2];
+    let first_number_max = Math.pow(10, Number(first_num_input));
+    let first_number_min = Math.pow(10, Number(first_num_input - 1));
+    let second_number_max = Math.pow(10, Number(second_num_input));
+    let second_number_min = Math.pow(10, Number(second_num_input - 1));
+    // stuff we need
+    let first_number = get_random_integer(first_number_min, first_number_max);
+    let second_number = get_random_integer(second_number_min, second_number_max);
+    document.getElementById('question').innerHTML = first_number.toString() + operator + second_number.toString();
+    document.getElementById('answer').value = "";
 }
 
 function evaluating() {
-    let first_num_input = document.getElementById('first_num').value;
-    let second_num_input = document.getElementById('second_num').value;
-    let operator = document.querySelector('input[name="operator"]:checked').value;
+    let set = JSON.parse(localStorage.getItem('info'));
+    let first_num_input = set[0];
+    let second_num_input = set[1];
+    let operator = set[2];
     let question = document.getElementById('question').value;
     let answer = document.getElementById('answer').value;
     const today = new Date();
@@ -73,26 +106,22 @@ function evaluating() {
             message.Answer = "Correct";
             writing_record(message);
             setting_question();
-            count();
         } else {
             alert("Sorry, please try again.")
             message.Answer = "Incorrect";
             writing_record(message);
             document.getElementById('answer').value = "";
-            count();
         }
     } else if (eval(question) === Number(answer)){
         alert("Well done. Let's move on to next one.")
         message.Answer = "Correct";
         writing_record(message);
         setting_question();
-        count();
     } else {
         alert("Please try again.");
         message.Answer = "Incorrect";
         writing_record(message);
         document.getElementById('answer').value = "";
-        count();
     }
 }
 
@@ -115,7 +144,6 @@ function writing_record(message) {
         localStorage.setItem('record', x);
     }
 }
-
 function setting_the_table() {
     // set the table
 
@@ -183,66 +211,10 @@ function setting_the_table() {
     container.appendChild(table);
 }
 
-function count() {
-    let array = JSON.parse(localStorage.getItem('record'));
-    let correct = 0;
-    let incorrect = 0;
-    let total_today = 0;
-    let notTwoTimesThree = 0;
+function viewRecords() {
+    //fix the bug by setting the table afterwards
+    window.location="./info.html"
+    setting_the_table();
 
-    const today = new Date();
-    let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
-
-    for(let i = 0; i < array.length; i++){
-        if (array[i].Date === date) {
-           total_today++;
-           document.getElementById('total_today').value = total_today;
-        }
-        if (array[i].Date === date && array[i].Answer === "Correct") {
-            correct++;
-            document.getElementById('value-correct').value = correct;
-        }
-        if (array[i].Date === date && array[i].Answer === "Incorrect") {
-            incorrect++;
-            document.getElementById('value-incorrect').value = incorrect;
-        }
-        if (array[i].Date === date &&
-            array[i].Question !== "2 digit(s) *3 digit(s)" &&
-            array[i].Question !== "3 digit(s) *2 digit(s)")
-        {
-            notTwoTimesThree++;
-            document.getElementById('non_2*3').style.display = "block";
-            document.getElementById('non_2*3_label').style.display = "block";
-            document.getElementById('non_2*3').value = notTwoTimesThree;
-        }
-    }
-    let questionDoneTodayCorrectly = array.filter(items => items.Date === date && items.Answer === "Correct");
-    let result = { };
-    for(let i = 0; i < questionDoneTodayCorrectly.length; ++i) {
-        if(!result[questionDoneTodayCorrectly[i].Question])
-            result[questionDoneTodayCorrectly[i].Question] = 0;
-        ++result[questionDoneTodayCorrectly[i].Question];
-    }
 }
 
-let i = 0;
-
-function move() {
-    if (i === 0) {
-        i = 1;
-        let elem = document.getElementById("progressBar");
-        let width = 10;
-        let id = setInterval(frame, 10);
-
-        function frame() {
-            if (width >= 100) {
-                clearInterval(id);
-                i = 0;
-            } else {
-                width++;
-                elem.style.width = width + "%";
-                elem.innerHTML = width + "%";
-            }
-        }
-    }
-}
