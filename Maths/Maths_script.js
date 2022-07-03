@@ -59,7 +59,6 @@ function startingQuestion() {
     document.getElementById('hiddenContainer').style.display="none";
     document.getElementById('container_2').style.display="block";
     document.getElementById('progressBar').style.display="block";
-    setBar();
     setting_question();
 
 }
@@ -111,6 +110,7 @@ function evaluating() {
             message.Answer = "Correct";
             writing_record(message);
             setting_question();
+            setBar();
         } else {
             alert("Sorry, please try again.")
             message.Answer = "Incorrect";
@@ -122,13 +122,13 @@ function evaluating() {
         message.Answer = "Correct";
         writing_record(message);
         setting_question();
+        setBar();
     } else {
         alert("Please try again.");
         message.Answer = "Incorrect";
         writing_record(message);
         document.getElementById('answer').value = "";
     }
-    setBar();
 }
 
 function setBar() {
