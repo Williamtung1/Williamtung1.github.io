@@ -149,7 +149,7 @@ function setBar() {
     }
 
     width = correct / targetToday * 100;
-    if (correct >= 2) {
+    if (correct >= 100) {
         let modal = document.getElementById("modal");
         // Get the <span> element that closes the modal
         let span = document.getElementsByClassName("close")[0];
