@@ -1,28 +1,32 @@
+"use strict";
 //execute the function when the button to records
 function count() {
+    document.getElementById('dateInput').value = formatDate();
+    countForDate();
+}
+
+function countForDate() {
     let array = JSON.parse(localStorage.getItem('record'));
     let correct = 0;
     let incorrect = 0;
-    let total_today = 0;
+    let total = 0;
     let notTwoTimesThree = 0;
-
-    const today = new Date();
-    let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
-
+    let x = document.getElementById('dateInput');
+    console.log(x.value)
     for(let i = 0; i < array.length; i++){
-        if (array[i].Date === date) {
-            total_today++;
-            document.getElementById('total_today').value = total_today;
+        if (array[i].Date === x.value) {
+            total++;
+            document.getElementById('total').value = total;
         }
-        if (array[i].Date === date && array[i].Answer === "Correct") {
+        if (array[i].Date === x.value && array[i].Answer === "Correct") {
             correct++;
             document.getElementById('value-correct').value = correct;
         }
-        if (array[i].Date === date && array[i].Answer === "Incorrect") {
+        if (array[i].Date === x.value && array[i].Answer === "Incorrect") {
             incorrect++;
             document.getElementById('value-incorrect').value = incorrect;
         }
-        if (array[i].Date === date &&
+        if (array[i].Date === x.value &&
             array[i].Question !== "2 digit(s) *3 digit(s)" &&
             array[i].Question !== "3 digit(s) *2 digit(s)")
         {
@@ -33,14 +37,26 @@ function count() {
         }
     }
 
-    let questionDoneTodayCorrectly = array.filter(items => items.Date === date && items.Answer === "Correct");
+    let questionDoneTodayCorrectly = array.filter(items => items.Date === x.value && items.Answer === "Correct");
     let result = { };
     for(let i = 0; i < questionDoneTodayCorrectly.length; ++i) {
         if(!result[questionDoneTodayCorrectly[i].Question])
             result[questionDoneTodayCorrectly[i].Question] = 0;
         ++result[questionDoneTodayCorrectly[i].Question];
     }
-    console.log(result)
+
+}
+
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}
+
+function formatDate(date = new Date()) {
+    return [
+        date.getFullYear(),
+        padTo2Digits(date.getMonth() + 1),
+        padTo2Digits(date.getDate()),
+    ].join('-');
 }
 
 function setInfo() {
@@ -84,11 +100,9 @@ function evaluating() {
     let question = document.getElementById('question').value;
     let answer = document.getElementById('answer').value;
     const today = new Date();
-    //                                  as January = 0
-    let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
     let time = today.getHours() + ":" + today.getMinutes();
     let message = {
-        Date: date,
+        Date: formatDate(),
         Time: time,
         Question: first_num_input + " digit(s) " + operator + second_num_input + " digit(s)",
         Answer: "",
@@ -139,19 +153,21 @@ function setBar() {
     if (localStorage.getItem('record') !== null) {
         let array = JSON.parse(localStorage.getItem('record'));
         const today = new Date();
-        let date = today.getDate()+"-"+(today.getMonth()+1) + "-" + today.getFullYear();
-
+        console.log(today.getDay())
+        console.log(typeof today.getDay())
         let targetToday;
-        if (today.getDay() === 0 || 6) {
+        if (today.getDay() === 0 || today.getDay() === 6) {
             targetToday = 200;
+            console.log("weekends")
         } else {
             targetToday = 100;
+            console.log("weekdays")
         }
         let bar = document.getElementById("progressBar");
         let width;
         let correct = 0;
         for(let i = 0; i < array.length; i++){
-            if (array[i].Date === date && array[i].Answer === "Correct") {
+            if (array[i].Date === formatDate() && array[i].Answer === "Correct") {
                 correct++;
             }
         }
