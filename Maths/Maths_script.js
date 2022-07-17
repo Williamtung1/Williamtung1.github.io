@@ -2,6 +2,7 @@
 //execute the function when the button to records
 function count() {
     document.getElementById('dateInput').value = formatDate();
+
     countForDate();
 }
 
@@ -87,8 +88,13 @@ function setting_question() {
     // stuff we need
     let first_number = get_random_integer(first_number_min, first_number_max);
     let second_number = get_random_integer(second_number_min, second_number_max);
-    document.getElementById('question').innerHTML = first_number.toString() + operator + second_number.toString();
-    document.getElementById('answer').value = "";
+    if (operator === "/" && first_number % second_number !== 0) {
+        setting_question();
+    } else {
+        document.getElementById('question').innerHTML = first_number.toString() + operator + second_number.toString();
+        document.getElementById('answer').value = "";
+        //alert(eval(document.getElementById('question').value));
+    }
 }
 
 function evaluating() {
@@ -107,23 +113,7 @@ function evaluating() {
         Question: first_num_input + " digit(s) " + operator + second_num_input + " digit(s)",
         Answer: "",
     };
-    if (question.includes("/")) {
-        let x = eval(question);
-        x = Math.round(x);
-        alert(x);
-        if (x === Number(answer)){
-            alert("Well done. Let's move on to next one.");
-            message.Answer = "Correct";
-            writing_record(message);
-            setting_question();
-
-        } else {
-            alert("Sorry, please try again.")
-            message.Answer = "Incorrect";
-            writing_record(message);
-            document.getElementById('answer').value = "";
-        }
-    } else if (eval(question) === Number(answer)){
+    if (eval(question) === Number(answer)){
         alert("Well done. Let's move on to next one.")
         message.Answer = "Correct";
         writing_record(message);
@@ -173,22 +163,8 @@ function setBar() {
         }
 
         width = correct / targetToday * 100;
-        if (width >= 100) {
-            let modal = document.getElementById("modal");
-            // Get the <span> element that closes the modal
-            let span = document.getElementsByClassName("close1")[0];
-            modal.style.display = "block";
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside the modal, close it
-            window.onclick = function(event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
-            }
+        if (width > 100) {
+            document.getElementById('progress').innerHTML = String(correct) + ' Questions answered correctly';
         } else {
             bar.style.width = width + "%";
             bar.innerHTML = String(correct);
