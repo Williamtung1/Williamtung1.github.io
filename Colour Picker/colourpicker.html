@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colour Picker</title>
+</head>
+<body>
+<label><input type="color" id="colourInput"></label>
+<p>Colour in hex:</p>
+<label for="hex"></label><textarea id="hex" readonly></textarea>
+<p>Colour in RBG:</p>
+<label for="rbg"></label><textarea id="rbg" readonly></textarea>
+
+<script>
+    document.getElementById('colourInput').addEventListener( "change" ,function () {
+        let colour = this.value
+        console.log()
+        document.getElementById('hex').value = colour;
+        document.getElementById('rbg').value = hexToRgb();
+        function hexToRgb() {
+            return ['0x' + colour[1] + colour[2] | 0, '0x' + colour[3] + colour[4] | 0, '0x' + colour[5] + colour[6] | 0];
+        }
+        document.getElementById('colour').style.color = colour
+    })
+</script>
+</body>
+</html>

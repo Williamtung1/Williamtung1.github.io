@@ -97,8 +97,9 @@ function set_time_and_time() {
     let hour = now.getHours();
     let minute = now.getMinutes();
     let second = now.getSeconds();
+    let millisecond = now.getMilliseconds()
     let date = now.getDate();
     let month = now.getMonth()+1;
     let year = now.getFullYear();
-    return hour, minute, second, date, month, year;
+    return [hour, minute, second, millisecond, date, month, year];
 }
