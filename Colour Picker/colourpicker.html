@@ -2,26 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Colour Picker">
+    <meta name="author" content="William">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colour Picker</title>
 </head>
-<body>
+<body style="margin: auto">
 <label><input type="color" id="colourInput"></label>
 <p>Colour in hex:</p>
-<label for="hex"></label><textarea id="hex" readonly></textarea>
+<label for="hex"></label><textarea id="hex" readonly ></textarea>
 <p>Colour in RBG:</p>
 <label for="rbg"></label><textarea id="rbg" readonly></textarea>
 
 <script>
+
     document.getElementById('colourInput').addEventListener( "change" ,function () {
         let colour = this.value
         console.log()
-        document.getElementById('hex').value = colour;
-        document.getElementById('rbg').value = hexToRgb();
+        document.getElementById('hex').value = colour.toUpperCase();
+        document.getElementById('rbg').value = "rgb(" + hexToRgb() + ")";
         function hexToRgb() {
             return ['0x' + colour[1] + colour[2] | 0, '0x' + colour[3] + colour[4] | 0, '0x' + colour[5] + colour[6] | 0];
         }
-        document.getElementById('colour').style.color = colour
     })
+
 </script>
 </body>
 </html>
