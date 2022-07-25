@@ -114,15 +114,15 @@ function evaluating() {
         Answer: "",
     };
     if (eval(question) === Number(answer)){
-        alert("Well done. Let's move on to next one.")
         message.Answer = "Correct";
         writing_record(message);
+        alert("Well done. Let's move on to next one.")
         setting_question();
 
     } else {
-        alert("Please try again.");
         message.Answer = "Incorrect";
         writing_record(message);
+        alert("Please try again.");
         document.getElementById('answer').value = "";
     }
     setBar();

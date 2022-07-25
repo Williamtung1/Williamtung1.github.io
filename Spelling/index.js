@@ -3,8 +3,9 @@ window.speechSynthesis.onvoiceschanged = () => {
     // Get List of Voices
     voices = window.speechSynthesis.getVoices();
 };
-
-let arr = ["William is clever"]
+let arr1 = ["beautiful", "wonderful", "handsome", "clever", "amazing", "great", "intelligent", "hardworking"]
+let arr2 = ["delicious", 'yummy', 'tasty', 'refreshing', 'extraordinary']
+let arr = arr1.concat(arr2)
 
 
 function speech(text) {
