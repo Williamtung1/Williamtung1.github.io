@@ -10,8 +10,14 @@ let arr = arr1.concat(arr2)
 
 function speech(text) {
     let msg = new SpeechSynthesisUtterance();
+    let voices = window.speechSynthesis.getVoices();
+    msg.voice = voices[3];
+    msg.voiceURI = 'native';
+    msg.volume = 1; // 0 to 1
+    msg.rate = 1; // 0.1 to 10
+    msg.pitch = 1; //0 to 2
     msg.text = text;
-    msg.lang = 'en-GB'
+    msg.lang = 'en-GB';
     speechSynthesis.speak(msg);
     
 }
