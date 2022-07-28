@@ -106,7 +106,7 @@ function evaluating() {
     let question = document.getElementById('question').value;
     let answer = document.getElementById('answer').value;
     const today = new Date();
-    let time = today.getHours() + ":" + today.getMinutes();
+    let time = padTo2Digits(today.getHours()) + ":" + padTo2Digits(today.getMinutes());
     let message = {
         Date: formatDate(),
         Time: time,
